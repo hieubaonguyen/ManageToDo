@@ -12,8 +12,9 @@ import { ITodo } from 'src/app/Models/todo';
 })
 export class EditTodoComponent implements OnInit {
   options = ['Complete', 'Not Complete'];
-  loading = false;
+  loading: boolean = false;
   todo: ITodo | null = null;
+  loadingForm: boolean = true;
 
   todoForm: FormGroup = this.fb.group({
     name: [
@@ -46,6 +47,7 @@ export class EditTodoComponent implements OnInit {
           dateCreated: this.todo?.dateCreated.toString().split('.')[0],
           status: this.todo?.status,
         });
+        this.loadingForm = false;
       },
     });
   }

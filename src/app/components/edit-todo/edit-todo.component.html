@@ -1,6 +1,9 @@
 <div class="container">
   <h1>Add Todo</h1>
-  <form class="example-form" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <div class="loading-list" *ngIf="loadingForm">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <form class="example-form" [formGroup]="todoForm" (ngSubmit)="onSubmit()" *ngIf="!loadingForm">
     <mat-card>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Name</mat-label>
@@ -29,6 +32,7 @@
           formControlName="description"
           placeholder="Input Description"
         ></textarea>
+        <mat-hint>Errors appear instantly!</mat-hint>
         <mat-error *ngIf="hanlerError('description', 'required')">
           Description is required
         </mat-error>

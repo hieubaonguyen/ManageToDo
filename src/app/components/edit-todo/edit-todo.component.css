@@ -2,15 +2,15 @@
   width: 70%;
 }
 
-.container{
+.container {
   margin-left: 4%;
 }
 
-.full-wrapper{
+.full-wrapper {
   text-align: right;
 }
 
-.button-wrapper button{
+.button-wrapper button {
   margin-right: 5px;
 }
 
@@ -35,12 +35,17 @@
   position: relative;
 }
 @media (max-width: 800px) {
-
-  .container{
+  .container {
     margin-left: 0;
   }
 
   .example-form {
     width: 100%;
   }
+}
+.loading-list {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  right: 50%;
 }
