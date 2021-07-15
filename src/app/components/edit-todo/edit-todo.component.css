@@ -1,0 +1,46 @@
+.example-form {
+  width: 70%;
+}
+
+.container{
+  margin-left: 4%;
+}
+
+.full-wrapper{
+  text-align: right;
+}
+
+.button-wrapper button{
+  margin-right: 5px;
+}
+
+.example-full-width {
+  width: 100%;
+  margin: 0 0 18px 0;
+}
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: inline-block;
+  position: relative;
+}
+@media (max-width: 800px) {
+
+  .container{
+    margin-left: 0;
+  }
+
+  .example-form {
+    width: 100%;
+  }
+}

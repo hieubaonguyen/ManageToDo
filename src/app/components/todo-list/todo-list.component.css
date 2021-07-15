@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+}
+table .mat-cell  {
+  width: 10%;
+}
+table .mat-cell button{
+  margin: 0 2% 0 0;
+  width: 20%;
+}
+.loading-list{
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  right: 50%;
+}
+.mat-raised-button{
+  min-width: 30px;
+  line-height: 0;
+  padding: 0;
+}

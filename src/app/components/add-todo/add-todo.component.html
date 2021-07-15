@@ -1,0 +1,86 @@
+<div class="container">
+  <h1>Add Todo</h1>
+  <form class="example-form" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input
+          type="name"
+          matInput
+          formControlName="name"
+          placeholder="Input Name"
+        />
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="hanlerError('name', 'minlength')">
+          Please enter name with min length 4
+        </mat-error>
+        <mat-error *ngIf="hanlerError('name', 'required')">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="hanlerError('name', 'regexValidate')">
+          Name cannot contain special characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Input Description"
+        ></textarea>
+        <mat-error *ngIf="hanlerError('description', 'required')">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date Created</mat-label>
+        <input
+          type="datetime-local"
+          matInput
+          formControlName="dateCreated"
+          placeholder="Input Date Created"
+        />
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="hanlerError('dateCreated', 'required')">
+          Date Created is required
+        </mat-error>
+        <mat-error *ngIf="hanlerError('dateCreated', 'dateIncorrect')">
+          Date Created must greater or equal current date
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="hanlerError('status', 'required')">
+          Status is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn" type="button" routerLink="/">
+            Cancel
+          </button>
+          <div class="button-container">
+            <div class="spinner-container" *ngIf="loading">
+              <mat-spinner diameter="24"></mat-spinner>
+            </div>
+            <button mat-flat-button color="primary" [disabled]="loading">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>
+
+<!-- <p>{{ todoForm.controls["name"].errors | json }}</p> -->
