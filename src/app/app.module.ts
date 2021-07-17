@@ -13,6 +13,7 @@ import { InMemoryDataService } from './commons/stores/in-memory-data.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpInterceptorsInterceptor } from './commons/interceptors/http-interceptors.interceptor';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HttpInterceptorsInterceptor } from './commons/interceptors/http-interce
     AddTodoComponent,
     EditTodoComponent,
     PageNotFoundComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

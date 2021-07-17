@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TodoService } from 'src/app/commons/services/todo/todo.service';
 import { customValidator } from '../../commons/validate/CustomValidate';
 
 @Component({
@@ -25,7 +27,11 @@ export class AddTodoComponent implements OnInit {
     status: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private todoService: TodoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -36,13 +42,14 @@ export class AddTodoComponent implements OnInit {
   onSubmit(): void {
     if (this.todoForm.valid) {
       this.loading = true;
-      setTimeout(() => {
-        console.log(this.todoForm.value);
-        this.compareInputDateWithCurrentDate()
-          ? this.refreshForm()
-          : this.setError('dateCreated', { dateIncorrect: true });
-        this.loading = false;
-      }, 1000);
+      if (this.compareInputDateWithCurrentDate()) {
+        this.todoService.createTodo(this.todoForm.value).subscribe();
+        this.refreshForm();
+        this.router.navigate(['/']);
+      } else {
+        this.setError('dateCreated', { dateIncorrect: true });
+      }
+      this.loading = false;
     }
   }
 

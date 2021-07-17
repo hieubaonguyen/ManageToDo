@@ -15,8 +15,22 @@ export class TodoService {
     return this.http.get<ITodo[]>(this.todoUrl);
   }
 
-  getTodo(id: number): Observable<ITodo>{
+  getTodo(id: number): Observable<ITodo> {
     const url = `${this.todoUrl}/${id}`;
     return this.http.get<ITodo>(url);
+  }
+
+  deleteTodo(id: number): Observable<unknown> {
+    const url = `${this.todoUrl}/${id}`;
+    return this.http.delete(url);
+  }
+
+  createTodo(todo: ITodo): Observable<ITodo> {
+    return this.http.post<ITodo>(this.todoUrl, todo);
+  }
+
+  editTodo(todo: ITodo): Observable<ITodo> {
+    const url = `${this.todoUrl}/${todo.id}`;
+    return this.http.put<ITodo>(url, todo);
   }
 }

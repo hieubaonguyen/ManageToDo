@@ -22,7 +22,7 @@
     <ng-container matColumnDef="dateCreated">
       <th mat-header-cell *matHeaderCellDef>Date Created</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.dateCreated.split('.')[0] | date: "dd/MM/yyyy, h:mm a" }}
+        {{ element.dateCreated.split(".")[0] | date: "dd/MM/yyyy, h:mm a" }}
       </td>
     </ng-container>
 
@@ -34,10 +34,20 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="warn" aria-label="delete todo">
+        <button
+          mat-raised-button
+          color="warn"
+          aria-label="delete todo"
+          (click)="deleteTodo(element.id)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
-        <button routerLink="/update/{{element.id}}" mat-raised-button color="primary" aria-label="edit todo">
+        <button
+          routerLink="/update/{{ element.id }}"
+          mat-raised-button
+          color="primary"
+          aria-label="edit todo"
+        >
           <mat-icon>edit</mat-icon>
         </button>
       </td>
